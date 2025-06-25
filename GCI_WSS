@@ -1,0 +1,67 @@
+import pandas as pd
+from pyGCS import GCS, GCI
+
+# File paths for area CSVs (each corresponds to a mesh resolution)
+file_500k = r"C:\Users\magnuswe\OneDrive - SINTEF\Simvascular\results\last_cycle\AAA001_sim_0-19_1-1mill-last_cycle\model_500k_area_vs_threshold.csv"
+file_1_1mill = r"C:\Users\magnuswe\OneDrive - SINTEF\Simvascular\results\last_cycle\AAA001_sim_0-19_1-1mill-last_cycle\model_1.1mill_area_vs_threshold.csv"
+file_2_5mill = r"C:\Users\magnuswe\OneDrive - SINTEF\Simvascular\results\last_cycle\AAA001_sim_0-19_1-1mill-last_cycle\model_2.5mill_area_vs_threshold.csv"
+
+# Mesh info (from coarsest to finest)
+cells_geo = [493360, 1102627, 2465237]
+volume_geo = 325.30233
+
+# Load data from each CSV
+df_500k = pd.read_csv(file_500k)
+df_1_1mill = pd.read_csv(file_1_1mill)
+df_2_5mill = pd.read_csv(file_2_5mill)
+
+# Ensure threshold alignment across all files
+thresholds = sorted(set(df_500k["Threshold"]) & set(df_1_1mill["Threshold"]) & set(df_2_5mill["Threshold"]), reverse=True)
+
+# Store results
+results = []
+
+for t in thresholds:
+    try:
+        area_500k = df_500k.loc[df_500k["Threshold"] == t, "Area"].values[0]
+        area_1_1mill = df_1_1mill.loc[df_1_1mill["Threshold"] == t, "Area"].values[0]
+        area_2_5mill = df_2_5mill.loc[df_2_5mill["Threshold"] == t, "Area"].values[0]
+
+        # Fine to coarse
+        solutions = [area_2_5mill, area_1_1mill, area_500k]
+
+        # Perform GCI analysis
+        gci = GCI(dimension=3, simulation_order=2, volume=volume_geo, cells=cells_geo, solution=solutions)
+
+        apparent_order = gci.get("apparent_order")
+        gci12, gci23 = gci.get("gci")
+
+        results.append({
+            "Threshold": t,
+            "Apparent Order": apparent_order,
+            "GCI coarse→medium": gci12,
+            "GCI medium→fine": gci23
+        })
+
+        print(f"Threshold {t}: Area = {solutions}")
+        print(f"  Apparent order p: {apparent_order:.4f}")
+        print(f"  GCI coarse→medium: {gci12:.6f}")
+        print(f"  GCI medium→fine:   {gci23:.6f}\n")
+
+    except IndexError:
+        print(f"⚠️ Threshold {t} not found in one of the files. Skipping.\n")
+
+# Compute average values across all thresholds
+if results:
+    avg_p = sum(r["Apparent Order"] for r in results) / len(results)
+    avg_gci12 = sum(r["GCI coarse→medium"] for r in results) / len(results)
+    avg_gci23 = sum(r["GCI medium→fine"] for r in results) / len(results)
+
+    print("📊 Final Averages across all thresholds:")
+    print(f"  Average apparent order p:      {avg_p:.4f}")
+    print(f"  Average GCI coarse→medium:     {avg_gci12:.6f}")
+    print(f"  Average GCI medium→fine:       {avg_gci23:.6f}")
+
+else:
+    print("⚠️ No valid results to average.")
+
