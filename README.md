@@ -15,13 +15,9 @@ This repository documents multiple post-processing pipelines used in vascular si
 
 This pipeline describes the step-by-step process for preparing vascular models using VMTK and SimVascular, from STL conversion through to meshing.
 
----
-
 ## Prerequisites
 - VMTK installed and accessible in your terminal  
 - SimVascular installed (for Python scripting)
-
----
 
 ## Pipeline Steps
 
@@ -65,14 +61,10 @@ Show the difference from smoothed to unsmoothed model (Optional visualization)
 12. **Mesh Model**  
 `/Applications/SimVascular.app/Contents/Resources/simvascular --python -- scripts/sv_volume_meshing_Magnus.py Simvascular/geometrier/steg10/AAAxxx_FaceID.vtp Simvascular/geometrier/steg11/AAAxxx_0.15_ Simvascular/input/face_dict.csv 0.15`
 
----
-
 ## Notes
 - Replace `AAAxxx` with your actual model identifiers.  
 - Adjust paths depending on your folder structure.  
 - Make sure required scripts/tools are accessible in your system path.
-
----
 
 ---
 ## WSS Pipeline
