@@ -1,6 +1,6 @@
 # Vascular Simulation Post-Processing Pipelines
 
-This repository documents multiple post-processing pipelines used in vascular simulations. The pipelines analyze wall shear stress (WSS), particle age (residence time), and flow/pressure across arterial branches. Each pipeline includes a structured workflow with macros and scripts. The order of the pipelines are important as the state files created in the first few pipelines are loaded into later pipelines. The purpose of state files is to retrieve clips and slices information, to be consistent in the metrics calculations. There are some bugs in paraview, which results in clips and slices being read wrong. This could be fairly easily improved, by saving csv files with the respective normal and center of clips and slices.
+This repository documents multiple pre- and post-processing pipelines used in vascular simulations. Each pipeline includes a structured workflow with macros and scripts. The order of the pipelines are important as state files are created in some of the first pipelines and are loaded into some of the later pipelines. The purpose of state files is to retrieve clips and slices information, to be consistent in the metrics calculations. There are some bugs in paraview, which results in clips and slices sometimes being read wrong. This could be fairly easily improved, by saving csv files with the respective normal and center of clips and slices.
 
 ---
 
