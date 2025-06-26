@@ -1,14 +1,16 @@
-# Vascular Simulation Post-Processing Pipelines
+# Vascular Simulation Pre- and Post-Processing Pipelines
 
-This repository documents multiple pre- and post-processing pipelines used in vascular simulations. Each pipeline includes a structured workflow with macros and scripts. The order of the pipelines are important as state files are created in some of the first pipelines and are loaded into some of the later pipelines. The purpose of state files is to retrieve clips and slices information, to be consistent in the metrics calculations. There are some bugs in paraview, which results in clips and slices sometimes being read wrong. This could be fairly easily improved, by saving csv files with the respective normal and center of clips and slices.
+This repository documents multiple pre- and post-processing pipelines used in vascular simulations. Each pipeline includes a structured workflow with macros and scripts. The order of the pipelines are important as state files are created in some of the first pipelines and are loaded into some of the later pipelines. The Particle Age pipeline for example creates the paraview_valid_region.pvsm state file. The purpose of state files is to retrieve clips and slices information, to be consistent in the metrics calculations. There are some bugs in paraview, which results in clips and slices sometimes being read wrong. This could be fairly easily improved, by saving csv files with the respective normal and center of clips and slices.
 
 ---
 
 ## 📁 Pipelines Overview
 
-- [WSS Pipeline](#wss-pipeline)
-- [Particle Age Pipeline](#particle-age-pipeline)
-- [Post-Processing Flow/Pressure Pipeline](#post-processing-flowpressure-pipeline)
+- [VMTK Model and SimVascular Mesh Generation Pipeline](#vmtk-model-and-simVascular-mesh-generation-pipeline)
+- [AAA Vascular Geometry Processing](#particle-age-pipeline)
+- [Particle Age Pipeline](#post-processing-flowpressure-pipeline)
+- [Post-Processing Flow/Pressure Pipeline]
+- [Kinetic Energy Pipeline]
 
 ---
 # VMTK Model and SimVascular Mesh Generation Pipeline
@@ -68,9 +70,9 @@ Show the difference from smoothed to unsmoothed model (Optional visualization)
 
 ---
 
-# AAA Vascular Geometry Processing
+# AAA Vascular Geometry Processing (AAA_GeometryStats_clean.ipynb)
 
-This repository contains Python scripts for processing abdominal aortic aneurysm (AAA) vascular geometries. The code resamples aortic and iliac centerlines, computes important geometric features such as tortuosity, cross-sectional area, diameter, and perimeter along the vessels. It also identifies the bifurcation origin and normal vector, highlights the point of maximum aortic diameter, and saves key vessel metrics for further analysis or modeling. The script has two branches: One branch calculates geomtric values, while the other computes particle age pipeline necessities.
+The code resamples aortic and iliac centerlines, computes important geometric features such as tortuosity, cross-sectional area, diameter, and perimeter along the vessels. It also identifies the bifurcation origin and normal vector, highlights the point of maximum aortic diameter, and saves key vessel metrics for further analysis or modeling. The script has two branches: One branch calculates geomtric values, while the other computes particle age pipeline necessities.
 
 ## Features
 
@@ -84,12 +86,12 @@ This repository contains Python scripts for processing abdominal aortic aneurysm
 
 ---
 
-## WSS Pipeline
+# WSS Pipeline
 
-### Purpose
-Calculates spatially-averaged TAWSS, low shear areas, and high oscillatory shear index (OSI) regions over one cardiac cycle.
+## Purpose
+Stores time-dependent WSS for aortic and aneurysmal section, and calculates spatially-averaged TAWSS, low shear areas, and high oscillatory shear index (OSI) regions over one cardiac cycle.
 
-### Steps
+## Steps
 1. **Load Data**
    - Load `.vtp` files from the **last cycle**.
 2. **Preparation**
@@ -104,18 +106,18 @@ Calculates spatially-averaged TAWSS, low shear areas, and high oscillatory shear
      - Move `bifurclip` and `inlet` to isolate the aneurysm.
    - Run `WSSmacro_part2`.
 
-### Output
+## Output
 - Spatially-averaged TAWSS, low shear and high OSI areas
 - Time-dependent WSS values
 
 ---
 
-## Particle Age Pipeline
+# Particle Age Pipeline
 
-### Purpose
+## Purpose
 Estimates particle residence time in the domain by seeding particles and tracking their age over time.
 
-### Steps
+## Steps
 1. **Load Data**
    - Load `.vtu` files from the **last two cycles**.
 2. **Update Model Names**
@@ -165,12 +167,12 @@ Estimates particle residence time in the domain by seeding particles and trackin
 
 ---
 
-## Post-Processing Flow/Pressure Pipeline
+# Post-Processing Flow/Pressure Pipeline
 
-### Purpose
+## Purpose
 Extracts average surface pressure and flow rates at aorta and branch slices for multiple cardiac cycles.
 
-### Steps
+## Steps
 1. **Load Data**
    - Load `.vtu` files with **6 cardiac cycles** (excluding timestep 0).
 2. **Load State**
@@ -185,7 +187,7 @@ Extracts average surface pressure and flow rates at aorta and branch slices for 
 4. **Run Script**
    - Execute `SurfaceflowPressureMacro.py`
 
-### What the Macro Does
+## What the Macro Does
 - Copies `aorta`, `right`, and `left` to slices.
 - Applies:
   - `Integrate Variables` → gets area × pressure
@@ -199,7 +201,7 @@ Extracts average surface pressure and flow rates at aorta and branch slices for 
 
 # Kinetic Energy Pipeline
 
-This pipeline calculates kinetic energy (KE) in vascular CFD simulations based on velocity fields and geometry.
+This pipeline calculates kinetic energy (KE) in vascular CFD simulations based on velocity fields and geometry. The metric was not included in the article as it is assumed to be strongly correlated to volume and Dmax, as the inflow profile were equal in all simulations, making it sort of uninteresting. 
 
 ## 📋 Workflow Overview
 
@@ -351,6 +353,12 @@ This script processes and visualizes wall shear stress (WSS) data from vascular 
 # Windkessel Model Parameter Estimation from Flow Profile (RCR_modified_new.py)
 
 This Python script estimates optimal parameters for a 3-element Windkessel model (Z, C, R) and initial pressure offset by fitting simulated pressure to an inlet flow profile using numerical integration and optimization. It ensures the simulated pressure matches key physiological targets (systolic/diastolic pressure, mean pressure, and periodicity).
+
+---
+
+# RCR Parameter Splitting for Vascular Outlets (RCRsplit_modified.py)
+
+This Python script defines a utility function to split lumped 3-element Windkessel model parameters (`RCR`) into distributed outlet-specific values, based on their relative cross-sectional areas.
 
 ---
 
