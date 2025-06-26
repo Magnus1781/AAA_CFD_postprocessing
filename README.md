@@ -67,6 +67,23 @@ Show the difference from smoothed to unsmoothed model (Optional visualization)
 - Make sure required scripts/tools are accessible in your system path.
 
 ---
+
+# AAA Vascular Geometry Processing
+
+This repository contains Python scripts for processing abdominal aortic aneurysm (AAA) vascular geometries. The code resamples aortic and iliac centerlines, computes important geometric features such as tortuosity, cross-sectional area, diameter, and perimeter along the vessels. It also identifies the bifurcation origin and normal vector, highlights the point of maximum aortic diameter, and saves key vessel metrics for further analysis or modeling. The script has two branches: One branch calculates geomtric values, while the other computes particle age pipeline necessities.
+
+## Features
+
+- **Centerline resampling:** Interpolates centerline points evenly along the vessel arc length.
+- **Cross-sectional analysis:** Computes vessel cross-sectional area, perimeter, and maximum diameter from 3D vascular meshes at multiple locations.
+- **Tortuosity calculation:** Quantifies vessel curvature from resampled centerlines.
+- **Bifurcation detection:** Locates the bifurcation point and calculates the normal vector at that location.
+- **Visualization:** Interactive 3D visualization of the mesh and centerlines with Plotly.
+- **Data export:** Saves computed geometric properties and centerline data as CSV files for external analysis.
+- **Configurable model selection** for batch processing of multiple AAA cases.
+
+---
+
 ## WSS Pipeline
 
 ### Purpose
