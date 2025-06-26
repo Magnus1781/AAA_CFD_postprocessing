@@ -1,3 +1,12 @@
+"""
+
+@authors: Menno
+
+@Note:
+Magnus Wennemo implemented for-loops for iterating the initial guesses
+
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd

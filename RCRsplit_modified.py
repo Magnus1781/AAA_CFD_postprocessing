@@ -1,3 +1,9 @@
+"""
+
+@authors: Menno
+"""
+
+
 def splitRCR(Rp, C, Rd, Ai, A_tot):
     """
     Function to calculate Rpi, Ci, and Rdi based on the given inputs.

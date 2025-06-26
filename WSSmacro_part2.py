@@ -1,3 +1,9 @@
+"""
+
+@author: Magnus Wennemo
+
+"""
+
 #####load vtu files and clip below renals and the two extensions, change cwd then run this macroo########
 
 from paraview.simple import *

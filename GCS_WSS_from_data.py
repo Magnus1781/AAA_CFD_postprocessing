@@ -1,3 +1,8 @@
+"""
+
+@author: Magnus Wennemo
+
+"""
 import pandas as pd
 from pyGCS import GCS, GCI
 import os

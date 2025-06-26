@@ -1,3 +1,9 @@
+"""
+
+@author: Magnus Wennemo
+
+"""
+
 from paraview.simple import *
 import os
 import numpy as np

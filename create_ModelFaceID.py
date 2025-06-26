@@ -1,4 +1,8 @@
+"""
 
+@author: Magnus Wennemo
+
+"""
 import sys
 import vtk
 

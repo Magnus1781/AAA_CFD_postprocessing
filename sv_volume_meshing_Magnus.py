@@ -1,3 +1,11 @@
+"""
+
+@author: Patryk Rygiel, Magnus Wennemo
+
+@Note: Patryk Rygiel wrote the baseline script with setting meshing parameters and writing out file. Magnus Wennemo added radius based meshing
+
+"""
+
 import csv
 import os
 import sys
