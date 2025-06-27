@@ -4,14 +4,28 @@ This repository documents multiple pre- and post-processing pipelines used in va
 
 ---
 
-## 📁 Pipelines Overview
+## 📁 Overview
 
 - [VMTK Model and SimVascular Mesh Generation Pipeline](#vmtk-model-and-simVascular-mesh-generation-pipeline)
-- [AAA Vascular Geometry Processing](#particle-age-pipeline)
-- [Particle Age Pipeline](#post-processing-flowpressure-pipeline)
-- [Post-Processing Flow/Pressure Pipeline]
-- [Kinetic Energy Pipeline]
-
+- [AAA Vascular Geometry Processing](aaa-vascular-geometry-processing (aaa_geometrystats_clean.ipynb))
+- [WSS pipeline](wss-pipeline)
+- [Particle Age Pipeline](#particle-age-pipeline)
+- [Post-Processing Flow/Pressure Pipeline] (#post-processing-flowpressure-pipeline)
+- [Kinetic Energy Pipeline] (#kinetic-energy-pipeline)
+- [Neck Angle Analysis Pipeline](#neck-angle-analysis-pipeline)
+- [Qcrit Pipeline (Vortex Core Visualization)](#qcrit-pipeline-(vortex-core-visualization))
+- [Washout Pipeline](#washout-pipeline)
+- [WSS Analysis and Visualization (WSSdata_post-process.py)](#wss-analysis-and-visualization-wssdata_post-processpy)
+- [WSS Mesh Comparison Script (meshConvergenceWSSgraphs.py)](#wss-mesh-comparison-script-meshconvergencewssgraphspy)
+- [Windkessel Model Parameter Estimation from Flow Profile (RCR_modified_new.py)](#windkessel-model-parameter-estimation-from-flow-profile-rcr_modified_newpy)
+- [RCR Parameter Splitting for Vascular Outlets (RCRsplit_modified.py)](#rcr-parameter-splitting-for-vascular-outlets-rcrsplit_modifiedpy)
+- [Periodic Convergence Visualization of Flow and Pressure in Aorto-Iliac Models (checkResults.py)](#periodic-convergence-visualization-of-flow-and-pressure-in-aorto-iliac-models-checkresultspy)
+- [Pressure Work and Energy Loss in Aorto-Iliac Models (PressureEnergyLoss.py)](#pressure-work-and-energy-loss-in-aorto-iliac-models-pressureenergylosspy)
+- [Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)](#correlation-analysis-of-hemodynamic-and-morphological-metrics-r-correlation_analysisr)
+- [Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)](#grid-convergence-study-gcs-for-pressure-differences-gci2_pressurepy)
+-[Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy)
+-[Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy)
+-[WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy)
 ---
 # VMTK Model and SimVascular Mesh Generation Pipeline
 
@@ -330,7 +344,7 @@ This pipeline depends on the Geometry script and the Particle Age pipeline to an
 
 ---
 
-# Wall Shear Stress (WSS) Analysis and Visualization Pipeline (WSSdata_post-process.py)
+# WSS Analysis and Visualization (WSSdata_post-process.py)
 
 This Python script processes wall shear stress (WSS) time series data from multiple vascular models, computes trimmed statistical metrics, saves summary data to CSV, and generates detailed WSS time series plots for aneurysm and aorta regions.
 
@@ -344,7 +358,7 @@ This Python script processes wall shear stress (WSS) time series data from multi
 
 ---
 
-# Wall Shear Stress (WSS) Mesh Comparison Script (meshConvergenceWSSgraphs.py)
+# WSS Mesh Comparison Script (meshConvergenceWSSgraphs.py)
 
 This script processes and visualizes wall shear stress (WSS) data from vascular simulations to compare different mesh resolutions. It computes and plots trimmed statistics (mean, interquartile range, and top/bottom percentiles) for both the aneurysm and aorta regions over a cardiac cycle.
 
@@ -383,9 +397,9 @@ This script estimates the pressure-related energy transfer in aorto-iliac vascul
 
 ---
 
-# Correlation Analysis of Hemodynamic and Geometric Parameters (R) (correlation_analysis.R)
+# Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)
 
-This R script performs correlation analysis and visualization using a dataset of vascular simulation parameters (e.g., wall shear stress, sac volumes, geometric metrics).
+This R script performs correlation analysis and visualization using a dataset of metrics.
 
 ---
 
@@ -405,13 +419,13 @@ This script calculates the **Vortex Formation Time (VFT)** during systole for mu
 
 ---
 
-# Kinetic Energy Calculation from SimVascular Flow Data (kineticEnergyCalc.py)
+# Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)
 
 This script calculates the total **kinetic energy (KE)** of blood flow in a 3D vascular domain based on velocity magnitudes and cell volumes exported from SimVascular.
 
 ---
 
-# Wall Shear Stress Grid Convergence Study (GCS) – GCI Analysis (GCS_WSS_from_data.py)
+# WSS GCS – GCI Analysis (GCS_WSS_from_data.py)
 
 This script performs a **Grid Convergence Study (GCS)** on **wall shear stress (WSS)** data extracted from three different mesh resolutions of a vascular model. It uses the **Grid Convergence Index (GCI)** methodology to evaluate numerical uncertainty and apparent order of convergence for both aorta and aneurysm regions.
 
