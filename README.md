@@ -22,7 +22,7 @@ This repository documents multiple pre- and post-processing pipelines used in va
 - [Pressure Work and Energy Loss in Aorto-Iliac Models (PressureEnergyLoss.py)](#pressure-work-and-energy-loss-in-aorto-iliac-models-pressureenergylosspy) **Author**: Magnus
 - [Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)](#correlation-analysis-of-hemodynamic-and-morphological-metrics-r-correlation_analysisr) **Author**: Sebastien
 - [Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)](#grid-convergence-study-gcs-for-pressure-differences-gci2_pressurepy) **Author**: Magnus
-- [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy) **Author**: Magnus
+- [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy) **Author**: Paal and Magnus
 - [WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy) **Author**: Magnus
 - [Kinetic Energy Pipeline](#kinetic-energy-pipeline) **Author**: Magnus
 - [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy) **Author**: Magnus
