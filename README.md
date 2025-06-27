@@ -7,25 +7,25 @@ This repository documents multiple pre- and post-processing pipelines used in va
 ## 📁 Overview
 
 - [VMTK Model and SimVascular Mesh Generation Pipeline](#vmtk-model-and-simVascular-mesh-generation-pipeline) **Author**: Magnus
-- [AAA Vascular Geometry Processing](#aaa-vascular-geometry-processing-aaa_geometrystats_cleanipynb)
-- [WSS pipeline](wss-pipeline)
-- [Particle Age Pipeline](#particle-age-pipeline)
-- [Post-Processing Flow/Pressure Pipeline](#post-processing-flowpressure-pipeline)
-- [Neck Angle Analysis Pipeline](#neck-angle-analysis-pipeline)
-- [Qcrit Pipeline (Vortex Core Visualization)](#qcrit-pipeline-(vortex-core-visualization))
-- [Washout Pipeline](#washout-pipeline)
-- [WSS Analysis and Visualization (WSSdata_post-process.py)](#wss-analysis-and-visualization-wssdata_post-processpy)
-- [WSS Mesh Comparison Script (meshConvergenceWSSgraphs.py)](#wss-mesh-comparison-script-meshconvergencewssgraphspy)
-- [Windkessel Model Parameter Estimation from Flow Profile (RCR_modified_new.py)](#windkessel-model-parameter-estimation-from-flow-profile-rcr_modified_newpy)
-- [RCR Parameter Splitting for Vascular Outlets (RCRsplit_modified.py)](#rcr-parameter-splitting-for-vascular-outlets-rcrsplit_modifiedpy)
-- [Periodic Convergence Visualization of Flow and Pressure in Aorto-Iliac Models (checkResults.py)](#periodic-convergence-visualization-of-flow-and-pressure-in-aorto-iliac-models-checkresultspy)
-- [Pressure Work and Energy Loss in Aorto-Iliac Models (PressureEnergyLoss.py)](#pressure-work-and-energy-loss-in-aorto-iliac-models-pressureenergylosspy)
-- [Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)](#correlation-analysis-of-hemodynamic-and-morphological-metrics-r-correlation_analysisr)
-- [Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)](#grid-convergence-study-gcs-for-pressure-differences-gci2_pressurepy)
-- [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy)
-- [WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy)
-- [Kinetic Energy Pipeline](#kinetic-energy-pipeline)
-- [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy)
+- [AAA Vascular Geometry Processing](#aaa-vascular-geometry-processing-aaa_geometrystats_cleanipynb) **Author**: Paal and Magnus
+- [WSS pipeline](wss-pipeline) **Author**: Magnus
+- [Particle Age Pipeline](#particle-age-pipeline) **Author**: Magnus
+- [Post-Processing Flow/Pressure Pipeline](#post-processing-flowpressure-pipeline) **Author**: Magnus
+- [Neck Angle Analysis Pipeline](#neck-angle-analysis-pipeline) **Author**: Magnus
+- [Qcrit Pipeline (Vortex Core Visualization)](#qcrit-pipeline-(vortex-core-visualization)) **Author**: Magnus
+- [Washout Pipeline](#washout-pipeline) **Author**: Magnus
+- [WSS Analysis and Visualization (WSSdata_post-process.py)](#wss-analysis-and-visualization-wssdata_post-processpy) **Author**: Magnus
+- [WSS Mesh Comparison Script (meshConvergenceWSSgraphs.py)](#wss-mesh-comparison-script-meshconvergencewssgraphspy) **Author**: Magnus
+- [Windkessel Model Parameter Estimation from Flow Profile (RCR_modified_new.py)](#windkessel-model-parameter-estimation-from-flow-profile-rcr_modified_newpy) **Author**: Menno and Magnus
+- [RCR Parameter Splitting for Vascular Outlets (RCRsplit_modified.py)](#rcr-parameter-splitting-for-vascular-outlets-rcrsplit_modifiedpy) **Author**: Menno
+- [Periodic Convergence Visualization of Flow and Pressure in Aorto-Iliac Models (checkResults.py)](#periodic-convergence-visualization-of-flow-and-pressure-in-aorto-iliac-models-checkresultspy) **Author**: Magnus
+- [Pressure Work and Energy Loss in Aorto-Iliac Models (PressureEnergyLoss.py)](#pressure-work-and-energy-loss-in-aorto-iliac-models-pressureenergylosspy) **Author**: Magnus
+- [Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)](#correlation-analysis-of-hemodynamic-and-morphological-metrics-r-correlation_analysisr) **Author**: Sebastien
+- [Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)](#grid-convergence-study-gcs-for-pressure-differences-gci2_pressurepy) **Author**: Magnus
+- [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy) **Author**: Magnus
+- [WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy) **Author**: Magnus
+- [Kinetic Energy Pipeline](#kinetic-energy-pipeline) **Author**: Magnus
+- [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy) **Author**: Magnus
 ---
 # VMTK Model and SimVascular Mesh Generation Pipeline
 
