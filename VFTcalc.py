@@ -1,6 +1,6 @@
 """
 
-@author: Magnus Wennemo
+@author: Paal Skjetne and Magnus Wennemo
 
 """
 
