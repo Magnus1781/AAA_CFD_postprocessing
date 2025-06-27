@@ -7,11 +7,11 @@ This repository documents multiple pre- and post-processing pipelines used in va
 ## 📁 Overview
 
 - [VMTK Model and SimVascular Mesh Generation Pipeline](#vmtk-model-and-simVascular-mesh-generation-pipeline)
-- [AAA Vascular Geometry Processing](aaa-vascular-geometry-processing (aaa_geometrystats_clean.ipynb))
+- [AAA Vascular Geometry Processing](#aaa-vascular-geometry-processing-aaa_geometrystats_cleanipynb)
 - [WSS pipeline](wss-pipeline)
 - [Particle Age Pipeline](#particle-age-pipeline)
-- [Post-Processing Flow/Pressure Pipeline] (#post-processing-flowpressure-pipeline)
-- [Kinetic Energy Pipeline] (#kinetic-energy-pipeline)
+- [Post-Processing Flow/Pressure Pipeline](#post-processing-flowpressure-pipeline)
+- [Kinetic Energy Pipeline](#kinetic-energy-pipeline)
 - [Neck Angle Analysis Pipeline](#neck-angle-analysis-pipeline)
 - [Qcrit Pipeline (Vortex Core Visualization)](#qcrit-pipeline-(vortex-core-visualization))
 - [Washout Pipeline](#washout-pipeline)
