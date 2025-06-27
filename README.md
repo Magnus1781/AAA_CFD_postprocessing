@@ -23,18 +23,18 @@ This repository documents multiple pre- and post-processing pipelines used in va
 - [Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)](#correlation-analysis-of-hemodynamic-and-morphological-metrics-r-correlation_analysisr)
 - [Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)](#grid-convergence-study-gcs-for-pressure-differences-gci2_pressurepy)
 - [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy)
-- [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy)
 - [WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy)
 - [Kinetic Energy Pipeline](#kinetic-energy-pipeline)
+- [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy)
 ---
 # VMTK Model and SimVascular Mesh Generation Pipeline
-
+**Author**: Magnus
 This pipeline describes the step-by-step process for preparing vascular models using VMTK and SimVascular, from STL conversion through to meshing.
 
 ## Prerequisites
 - VMTK installed and accessible in your terminal  
 - SimVascular installed (for Python scripting)
-
+- ParaView installed (tested with v5.13 nightly)
 ## Pipeline Steps
 
 1. **Convert STL to VTP**  
@@ -85,7 +85,7 @@ Show the difference from smoothed to unsmoothed model (Optional visualization)
 ---
 
 # AAA Vascular Geometry Processing (AAA_GeometryStats_clean.ipynb)
-
+**Author**: Paal and Magnus
 The code resamples aortic and iliac centerlines, computes important geometric features such as tortuosity, cross-sectional area, diameter, and perimeter along the vessels. It also identifies the bifurcation origin and normal vector, highlights the point of maximum aortic diameter, and saves key vessel metrics for further analysis or modeling. The script has two branches: One branch calculates geomtric values, while the other computes particle age pipeline necessities.
 
 ## Features
@@ -101,7 +101,7 @@ The code resamples aortic and iliac centerlines, computes important geometric fe
 ---
 
 # WSS Pipeline
-
+**Author**: Magnus
 ## Purpose
 Stores time-dependent WSS for aortic and aneurysmal section, and calculates spatially-averaged TAWSS, low shear areas, and high oscillatory shear index (OSI) regions over one cardiac cycle.
 
@@ -127,7 +127,7 @@ Stores time-dependent WSS for aortic and aneurysmal section, and calculates spat
 ---
 
 # Particle Age Pipeline
-
+**Author**: Magnus
 ## Purpose
 Estimates particle residence time in the domain by seeding particles and tracking their age over time.
 
@@ -182,7 +182,7 @@ Estimates particle residence time in the domain by seeding particles and trackin
 ---
 
 # Post-Processing Flow/Pressure Pipeline
-
+**Author**: Magnus
 ## Purpose
 Extracts average surface pressure and flow rates at aorta and branch slices for multiple cardiac cycles.
 
@@ -215,7 +215,7 @@ Extracts average surface pressure and flow rates at aorta and branch slices for 
 
 
 # Neck Angle Analysis Pipeline
-
+**Author**: Magnus
 This pipeline calculates neck angles (α and β) in vascular geometries by integrating centroid data across slices from `.vtu` files. The angles are computed based on artificial lines between slice centroids.
 
 
@@ -247,7 +247,7 @@ This pipeline calculates neck angles (α and β) in vascular geometries by integ
 
 
 # Qcrit Pipeline (Vortex Core Visualization)
-
+**Author**: Magnus
 This pipeline visualizes vortex structures in CFD data by computing and displaying the Q-criterion isosurface at a value of 500.
 
 ## 📋 Workflow Overview
@@ -277,7 +277,7 @@ This pipeline visualizes vortex structures in CFD data by computing and displayi
 ---
 
 # Washout Pipeline
-
+**Author**: Magnus
 This pipeline depends on the Geometry script and the Particle Age pipeline to analyze washout in vascular simulations.
 
 ## 📋 Workflow Overview
@@ -311,7 +311,7 @@ This pipeline depends on the Geometry script and the Particle Age pipeline to an
 ---
 
 # WSS Analysis and Visualization (WSSdata_post-process.py)
-
+**Author**: Magnus
 This Python script processes wall shear stress (WSS) time series data from multiple vascular models, computes trimmed statistical metrics, saves summary data to CSV, and generates detailed WSS time series plots for aneurysm and aorta regions.
 
 ## Features
@@ -325,25 +325,25 @@ This Python script processes wall shear stress (WSS) time series data from multi
 ---
 
 # WSS Mesh Comparison Script (meshConvergenceWSSgraphs.py)
-
+**Author**: Magnus
 This script processes and visualizes wall shear stress (WSS) data from vascular simulations to compare different mesh resolutions. It computes and plots trimmed statistics (mean, interquartile range, and top/bottom percentiles) for both the aneurysm and aorta regions over a cardiac cycle.
 
 ---
 
 # Windkessel Model Parameter Estimation from Flow Profile (RCR_modified_new.py)
-
+**Author**: Menno and Magnus
 This Python script estimates optimal parameters for a 3-element Windkessel model (Z, C, R) and initial pressure offset by fitting simulated pressure to an inlet flow profile using numerical integration and optimization. It ensures the simulated pressure matches key physiological targets (systolic/diastolic pressure, mean pressure, and periodicity).
 
 ---
 
 # RCR Parameter Splitting for Vascular Outlets (RCRsplit_modified.py)
-
+**Author**: Menno
 This Python script defines a utility function to split lumped 3-element Windkessel model parameters (`RCR`) into distributed outlet-specific values, based on their relative cross-sectional areas.
 
 ---
 
 # Periodic Convergence Visualization of Flow and Pressure in Aorto-Iliac Models (checkResults.py)
-
+**Author**: Magnus
 This script processes time-resolved flow and pressure data for a series of aorto-iliac vascular models and visualizes:
 
 - **Volume balance** (net flow consistency)
@@ -355,7 +355,7 @@ It generates two multi-panel figures summarizing 14 models across three key plot
 ---
 
 # Pressure Work and Energy Loss in Aorto-Iliac Models (PressureEnergyLoss.py)
-
+**Author**: Magnus
 This script estimates the pressure-related energy transfer in aorto-iliac vascular models by computing:
 
 1. **Pressure Work**: Work done by the heart to push blood through each iliac outlet.
@@ -364,13 +364,13 @@ This script estimates the pressure-related energy transfer in aorto-iliac vascul
 ---
 
 # Correlation Analysis of Hemodynamic and Morphological Metrics (R) (correlation_analysis.R)
-
+**Author**: Sebastien
 This R script performs correlation analysis and visualization using a dataset of metrics.
 
 ---
 
 # Grid Convergence Study (GCS) for Pressure Differences (GCI2_pressure.py)
-
+**Author**: Magnus
 This script performs a Grid Convergence Study (GCS) based on pressure differences extracted from three mesh resolutions in a vascular simulation. It calculates the **apparent order of convergence** and **Grid Convergence Index (GCI)** between:
 
 - Coarse: 500k cells
@@ -380,26 +380,20 @@ This script performs a Grid Convergence Study (GCS) based on pressure difference
 ---
 
 # Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)
-
+**Author**: Magnus
 This script calculates the **Vortex Formation Time (VFT)** during systole for multiple AAA (abdominal aortic aneurysm) models based on inlet flow data and anatomical throat areas.
 
 ---
 
-# Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)
-
-This script calculates the total **kinetic energy (KE)** of blood flow in a 3D vascular domain based on velocity magnitudes and cell volumes exported from SimVascular.
-
----
-
 # WSS GCS – GCI Analysis (GCS_WSS_from_data.py)
-
+**Author**: Magnus
 This script performs a **Grid Convergence Study (GCS)** on **wall shear stress (WSS)** data extracted from three different mesh resolutions of a vascular model. It uses the **Grid Convergence Index (GCI)** methodology to evaluate numerical uncertainty and apparent order of convergence for both aorta and aneurysm regions.
 
 ---
 
 
 # Kinetic Energy Pipeline
-
+**Author**: Magnus
 This pipeline calculates kinetic energy (KE) in vascular CFD simulations based on velocity fields and geometry. The metric was not included in the article as it is assumed to be strongly correlated to volume and Dmax, as the inflow profile were equal in all simulations, making it sort of uninteresting. 
 
 ## 📋 Workflow Overview
@@ -433,6 +427,11 @@ This pipeline calculates kinetic energy (KE) in vascular CFD simulations based o
 
 ---
 
-## 🛠 Requirements
+# Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)
+**Author**: Magnus
+This script calculates the total **kinetic energy (KE)** of blood flow in a 3D vascular domain based on velocity magnitudes and cell volumes exported from SimVascular.
 
-- ParaView (tested with v5.13 nightly)
+---
+
+
+
