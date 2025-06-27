@@ -11,7 +11,6 @@ This repository documents multiple pre- and post-processing pipelines used in va
 - [WSS pipeline](wss-pipeline)
 - [Particle Age Pipeline](#particle-age-pipeline)
 - [Post-Processing Flow/Pressure Pipeline](#post-processing-flowpressure-pipeline)
-- [Kinetic Energy Pipeline](#kinetic-energy-pipeline)
 - [Neck Angle Analysis Pipeline](#neck-angle-analysis-pipeline)
 - [Qcrit Pipeline (Vortex Core Visualization)](#qcrit-pipeline-(vortex-core-visualization))
 - [Washout Pipeline](#washout-pipeline)
@@ -26,6 +25,7 @@ This repository documents multiple pre- and post-processing pipelines used in va
 - [Vortex Formation Time (VFT) Estimation from Inlet Flow Profiles (VFTcalc.py)](#vortex-formation-time-vft-estimation-from-inlet-flow-profiles-vftcalcpy)
 - [Kinetic Energy Calculation from Velocity Data (kineticEnergyCalc.py)](#kinetic-energy-calculation-from-velocity-data-kineticenergycalcpy)
 - [WSS GCS – GCI Analysis (GCS_WSS_from_data.py)](#wss-gcs--gci-analysis-gcs_wss_from_datapy)
+- [Kinetic Energy Pipeline](#kinetic-energy-pipeline)
 ---
 # VMTK Model and SimVascular Mesh Generation Pipeline
 
@@ -213,40 +213,6 @@ Extracts average surface pressure and flow rates at aorta and branch slices for 
 
 ---
 
-# Kinetic Energy Pipeline
-
-This pipeline calculates kinetic energy (KE) in vascular CFD simulations based on velocity fields and geometry. The metric was not included in the article as it is assumed to be strongly correlated to volume and Dmax, as the inflow profile were equal in all simulations, making it sort of uninteresting. 
-
-## 📋 Workflow Overview
-
-1. **Run Geometry Script**  
-   - Execute the geometry preparation script before starting.
-
-2. **Configure Macros**  
-   - Change the model name inside both the KE macro and KE calculation scripts.  
-   - Set `normal_from_data=True` in the KE macro.
-
-3. **Load Data**  
-   - Load `.vtu` files from the last cardiac cycle.  
-   - Load the `particle_age_part1_PRE` state file from the `two_last_cycles` folder.
-
-4. **Clip Iliacs if Needed**  
-   - Check if iliac arteries should be clipped away (e.g., if located above bifurcation).  
-   - If clipping is needed, name this clip `"extraClip"`.
-
-5. **Run KE Macro**  
-   - Execute the KE macro script.
-
-6. **Check Bifurcation Clip**  
-   - Inspect the bifurcation clipping; if required, apply a Z-normal clip.
-
-7. **Review KE Log**  
-   - Check the `KE_log` for kinetic energy results and relevant info.
-
-8. **Run KE Calculation**  
-   - Run the KE calculation script to finalize kinetic energy analysis.
-
----
 
 # Neck Angle Analysis Pipeline
 
@@ -428,6 +394,42 @@ This script calculates the total **kinetic energy (KE)** of blood flow in a 3D v
 # WSS GCS – GCI Analysis (GCS_WSS_from_data.py)
 
 This script performs a **Grid Convergence Study (GCS)** on **wall shear stress (WSS)** data extracted from three different mesh resolutions of a vascular model. It uses the **Grid Convergence Index (GCI)** methodology to evaluate numerical uncertainty and apparent order of convergence for both aorta and aneurysm regions.
+
+---
+
+
+# Kinetic Energy Pipeline
+
+This pipeline calculates kinetic energy (KE) in vascular CFD simulations based on velocity fields and geometry. The metric was not included in the article as it is assumed to be strongly correlated to volume and Dmax, as the inflow profile were equal in all simulations, making it sort of uninteresting. 
+
+## 📋 Workflow Overview
+
+1. **Run Geometry Script**  
+   - Execute the geometry preparation script before starting.
+
+2. **Configure Macros**  
+   - Change the model name inside both the KE macro and KE calculation scripts.  
+   - Set `normal_from_data=True` in the KE macro.
+
+3. **Load Data**  
+   - Load `.vtu` files from the last cardiac cycle.  
+   - Load the `particle_age_part1_PRE` state file from the `two_last_cycles` folder.
+
+4. **Clip Iliacs if Needed**  
+   - Check if iliac arteries should be clipped away (e.g., if located above bifurcation).  
+   - If clipping is needed, name this clip `"extraClip"`.
+
+5. **Run KE Macro**  
+   - Execute the KE macro script.
+
+6. **Check Bifurcation Clip**  
+   - Inspect the bifurcation clipping; if required, apply a Z-normal clip.
+
+7. **Review KE Log**  
+   - Check the `KE_log` for kinetic energy results and relevant info.
+
+8. **Run KE Calculation**  
+   - Run the KE calculation script to finalize kinetic energy analysis.
 
 ---
 
